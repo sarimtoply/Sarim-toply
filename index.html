@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sarim Toply — UI/UX Designer portfolio. Selected work across UX research, product design, interactive web experiences and visual identity.">
+<meta name="theme-color" content="#173d35">
+<title>SARIM TOPLY — UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#183f36; --green2:#285c4e; --paper:#f2ecdf; --paper2:#e6dece;
+  --ink:#15201d; --muted:#68716c; --orange:#e16d3d; --yellow:#e8c86a;
+  --blue:#8bc2d7; --line:rgba(21,32,29,.16); --shadow:0 24px 70px rgba(11,31,27,.18);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--green);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none} button{font:inherit}
+::selection{background:var(--orange);color:white}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+.grid-bg{position:fixed;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px);background-size:28px 28px}
+.cursor{position:fixed;width:18px;height:18px;border:1px solid white;border-radius:50%;pointer-events:none;z-index:100;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .18s,height .18s}
+.cursor.big{width:62px;height:62px}
+.nav{position:fixed;top:18px;left:18px;right:18px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:12px 14px 12px 18px;border:1px solid rgba(255,255,255,.22);background:rgba(20,54,47,.72);backdrop-filter:blur(16px);color:white;border-radius:14px}
+.brand{font-family:"DM Mono";font-size:12px;letter-spacing:.08em}.navlinks{display:flex;gap:22px;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.navlinks a{opacity:.8}.navlinks a:hover{opacity:1}
+.menu{display:none;background:none;border:0;color:white;font-size:22px}
+.hero{min-height:100svh;padding:150px 5vw 50px;position:relative;color:white;display:grid;grid-template-columns:1.35fr .65fr;align-items:end;gap:5vw}
+.hero h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(70px,11vw,180px);line-height:.8;letter-spacing:-.075em;margin:0;max-width:1000px}
+.hero h1 em{color:#dce9d9}
+.hero-meta{align-self:center;max-width:380px;margin-bottom:8vh}.eyebrow{font:12px "DM Mono";text-transform:uppercase;letter-spacing:.12em;color:var(--yellow);margin-bottom:18px}
+.hero-meta p{font-size:18px;line-height:1.45;margin:0 0 28px;color:#e8efe9}.hero-meta .small{font-size:12px;color:#b7c9c1}
+.scroll-cue{position:absolute;bottom:34px;left:5vw;font:11px "DM Mono";color:#c5d6cf;text-transform:uppercase;letter-spacing:.1em}
+.hero-sticker{position:absolute;right:7vw;top:22vh;width:95px;height:95px;border-radius:50%;background:var(--orange);color:white;display:grid;place-items:center;text-align:center;font:10px "DM Mono";transform:rotate(10deg);box-shadow:0 15px 35px #09231e66}
+main{background:var(--paper);position:relative;border-radius:34px 34px 0 0;box-shadow:0 -25px 70px rgba(0,0,0,.18)}
+.section{padding:120px 5vw}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:50px}.section-num{font:12px "DM Mono";color:var(--muted)}h2{font-family:"Playfair Display";font-size:clamp(48px,7vw,100px);line-height:.9;font-weight:500;letter-spacing:-.05em;margin:0}
+.intro{max-width:560px;font-size:18px;line-height:1.55;color:#48534f;margin:0}
+.projects{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.project{position:relative;cursor:pointer;min-height:510px;border:1px solid var(--line);overflow:hidden;border-radius:18px;box-shadow:0 10px 30px rgba(30,45,38,.08);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.project:hover{transform:translateY(-9px) rotate(-.3deg);box-shadow:var(--shadow)}
+.project.cyb{grid-column:span 7;background:#171717;color:white}.project.sakura{grid-column:span 5;background:#f3f0e9}.project.puro{grid-column:span 5;background:#ddd3c1}.project.jio{grid-column:span 7;background:#ece9ff}
+.project-top{position:absolute;top:20px;left:22px;right:22px;display:flex;justify-content:space-between;font:11px "DM Mono";z-index:4}
+.project-title{position:absolute;left:28px;bottom:28px;z-index:5}.project-title h3{font-family:"Playfair Display";font-size:clamp(34px,4.5vw,66px);line-height:.85;margin:0 0 12px;font-weight:500;letter-spacing:-.04em}.project-title p{margin:0;font:11px "DM Mono";text-transform:uppercase;letter-spacing:.08em;opacity:.75}
+.arrow{position:absolute;right:22px;bottom:22px;width:46px;height:46px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:18px;z-index:5;transition:.3s}.project:hover .arrow{transform:rotate(45deg);background:currentColor;color:var(--paper)}
+.visual{position:absolute;inset:0;overflow:hidden}
+.cyb .visual{background:radial-gradient(circle at 72% 35%,#275d73 0,#182328 20%,#171717 48%);}.cyb .visual:after{content:"";position:absolute;inset:25% 10% 15%;background:linear-gradient(90deg,transparent 49%,rgba(255,255,255,.1) 50%,transparent 51%),linear-gradient(0deg,transparent 49%,rgba(255,255,255,.1) 50%,transparent 51%);background-size:42px 42px;opacity:.45}
+.cyber-card{position:absolute;right:10%;top:20%;width:48%;height:42%;border:1px solid #ffffff44;background:#f5f1e90d;backdrop-filter:blur(7px);transform:rotate(5deg);padding:22px}.cyber-card .line{height:3px;background:#e8eee9;margin:9px 0;width:75%}.cyber-card .pill{display:inline-block;border:1px solid #6db1cc;border-radius:30px;padding:7px 10px;font:9px "DM Mono";color:#9ed6e8}
+.sakura .visual{background:linear-gradient(145deg,#f9f7f0,#dbeaf0)}.bowl{position:absolute;left:50%;top:45%;width:58%;aspect-ratio:1.7;transform:translate(-50%,-50%);border-radius:50% 50% 46% 46%;background:#252330;box-shadow:0 25px 0 -4px #15151c,0 50px 40px #0002}.bowl:before{content:"";position:absolute;inset:13% 10% 20%;border-radius:50%;background:radial-gradient(circle at 50% 45%,#c77d4d 0 12%,#8b4f39 13% 20%,#292b3a 21% 100%)}.noodle{position:absolute;width:42%;height:9px;background:#e4c66d;border-radius:10px;left:29%;top:39%;transform:rotate(8deg);box-shadow:0 15px #e4c66d,0 30px #e4c66d}.egg{position:absolute;width:56px;height:56px;border-radius:50%;background:#f4efe2;border:7px solid #e4b84f;right:22%;top:35%;z-index:3}
+.puro .visual{background:linear-gradient(135deg,#c6b69e,#eee5d4)}.puro .visual:before,.puro .visual:after{content:"";position:absolute;background:#efe7d7;box-shadow:0 20px 35px #33271f33}.puro .visual:before{width:46%;height:68%;left:13%;top:15%;transform:rotate(-7deg)}.puro .visual:after{width:38%;height:55%;right:9%;bottom:11%;transform:rotate(8deg);background:#9a8067}.puro-label{position:absolute;z-index:3;left:20%;top:30%;font:9px "DM Mono";letter-spacing:.1em;text-transform:uppercase}.puro-label strong{display:block;font:52px "Playfair Display";letter-spacing:-.06em;text-transform:none}
+.jio .visual{background:linear-gradient(135deg,#f0edff,#d6d0ff)}.phone{position:absolute;width:31%;height:72%;right:15%;top:14%;border:8px solid #252448;border-radius:34px;background:#fff;box-shadow:0 25px 45px #25244833;overflow:hidden;transform:rotate(5deg)}.phone .bar{height:18%;background:#625db8}.phone .screen-line{height:9px;background:#d7d3ef;margin:14px;border-radius:9px}.phone .screen-card{margin:14px;height:26%;border-radius:15px;background:#f1effa;border:1px solid #ddd9ef}.jio-copy{position:absolute;left:12%;top:25%;font:10px "DM Mono";text-transform:uppercase;letter-spacing:.1em}.jio-copy strong{display:block;font:62px "Playfair Display";line-height:.85;text-transform:none;letter-spacing:-.05em}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}.tag{font:10px "DM Mono";border:1px solid var(--line);padding:10px 12px;border-radius:99px;text-transform:uppercase}
+.process{background:#e4ddcf;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.process-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}.process-item{padding:28px 20px 40px;border-right:1px solid var(--line)}.process-item:last-child{border-right:0}.process-item b{font:12px "DM Mono";color:var(--orange)}.process-item h3{font-family:"Playfair Display";font-size:32px;font-weight:500;margin:36px 0 10px}.process-item p{font-size:14px;color:#58615c;line-height:1.5}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:start}.about-copy{font-family:"Playfair Display";font-size:clamp(30px,4vw,58px);line-height:1.02;letter-spacing:-.035em}.about-copy em{color:var(--orange)}.about-side{font-size:16px;line-height:1.6;color:#58615c}.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:30px}.fact{padding:18px 0;border-bottom:1px solid var(--line)}.fact:nth-child(odd){margin-right:18px}.fact span{display:block;font:10px "DM Mono";color:var(--muted);text-transform:uppercase;margin-bottom:7px}
+.contact{background:var(--green);color:white;min-height:70vh;display:flex;align-items:center;position:relative;overflow:hidden}.contact h2{max-width:900px}.contact .big-link{display:inline-block;color:var(--yellow);border-bottom:1px solid #ffffff55;margin-top:35px;font:12px "DM Mono";text-transform:uppercase;letter-spacing:.1em;padding-bottom:8px}.orbit{position:absolute;width:420px;height:420px;border:1px solid #ffffff1f;border-radius:50%;right:-120px;bottom:-170px}.orbit:before{content:"";position:absolute;inset:45px;border:1px dashed #ffffff2c;border-radius:50%}
+.footer{background:#102f29;color:#a9bdb5;padding:24px 5vw;display:flex;justify-content:space-between;font:10px "DM Mono";text-transform:uppercase;letter-spacing:.06em}
+.modal{position:fixed;inset:0;background:rgba(8,25,21,.72);backdrop-filter:blur(12px);z-index:80;display:none;padding:4vw;overflow:auto}.modal.open{display:block}.modal-card{background:var(--paper);max-width:1100px;margin:auto;border-radius:24px;min-height:90vh;overflow:hidden;box-shadow:0 40px 120px #0005}.modal-head{padding:26px 30px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#f2ecdfeb;backdrop-filter:blur(12px);z-index:2}.close{border:1px solid var(--line);width:42px;height:42px;border-radius:50%;background:none;cursor:pointer}.modal-body{padding:60px 7vw 90px}.modal-kicker{font:11px "DM Mono";color:var(--orange);text-transform:uppercase;letter-spacing:.1em}.modal h3{font-family:"Playfair Display";font-size:clamp(48px,7vw,90px);font-weight:500;line-height:.9;letter-spacing:-.05em;margin:14px 0 40px}.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin-bottom:50px}.meta-grid span{font:10px "DM Mono";color:var(--muted);display:block;text-transform:uppercase;margin-bottom:7px}.meta-grid b{font-size:13px}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin:35px 0}.case-block{border-top:1px solid var(--line);padding-top:18px}.case-block h4{font:11px "DM Mono";text-transform:uppercase;margin:0 0 15px;color:var(--orange)}.case-block p,.case-block li{font-size:15px;line-height:1.6;color:#4d5853}.case-block ul{padding-left:20px}.quote{font-family:"Playfair Display";font-size:clamp(28px,4vw,48px);line-height:1.05;border-left:3px solid var(--orange);padding-left:24px;margin:55px 0}.case-visual{min-height:330px;border-radius:16px;margin:45px 0;background:#171717;position:relative;overflow:hidden}.case-visual.sakura{background:#e8f0f1}.case-visual.puro{background:#d9cbb8}.case-visual.jio{background:#dedaff}.case-visual.cyb{background:#151515}
+
+.actual-work{margin-top:70px;border-top:1px solid var(--line);padding-top:50px}.actual-work h3{font-family:"Playfair Display";font-size:42px;font-weight:500;margin:0 0 10px}.actual-work .sub{color:var(--muted);max-width:620px;line-height:1.5}.artifact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:28px}.artifact{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;min-height:250px;box-shadow:0 10px 30px rgba(30,45,38,.08)}.artifact img{width:100%;height:100%;min-height:280px;object-fit:cover;display:block}.artifact iframe{width:100%;height:500px;border:0;display:block;background:#fff}.artifact-label{padding:12px 15px;border-top:1px solid var(--line);font:10px "DM Mono";text-transform:uppercase;color:var(--muted)}
+.work-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:saturate(.9)}.project:hover .work-image{transform:scale(1.045)}.project.cyb .work-image{object-position:center top}.project.sakura .work-image{object-position:center top}.project.puro .iframe-preview{position:absolute;inset:0;width:130%;height:130%;border:0;transform:scale(.77);transform-origin:top left;pointer-events:none;background:white}.project.jio .fig-preview{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.project.has-real .project-title{background:linear-gradient(transparent,rgba(0,0,0,.7));left:0;right:0;bottom:0;padding:100px 28px 28px}.project.has-real .project-top{color:white;text-shadow:0 1px 8px #0008}.project.sakura.has-real .project-title{color:white}.project.sakura.has-real .project-top{color:white}
+.case-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:35px 0}.case-gallery figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:white}.case-gallery img{display:block;width:100%;height:320px;object-fit:cover}.case-gallery figcaption{padding:11px 14px;font:10px "DM Mono";color:var(--muted);text-transform:uppercase}.case-embed{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:35px 0;background:white}.case-embed iframe{width:100%;height:620px;border:0}
+@media(max-width:800px){.nav{top:10px;left:10px;right:10px}.navlinks{display:none}.menu{display:block}.hero{grid-template-columns:1fr;padding-top:145px}.hero-meta{align-self:auto;margin:30px 0 90px}.hero-sticker{right:7vw;top:31vh;width:72px;height:72px;font-size:8px}.section{padding:80px 6vw}.section-head{display:block}.intro{margin-top:25px}.project,.project.cyb,.project.sakura,.project.puro,.project.jio{grid-column:span 12;min-height:430px}.process-grid{grid-template-columns:1fr 1fr}.process-item:nth-child(2){border-right:0}.process-item:nth-child(3){border-top:1px solid var(--line)}.process-item:nth-child(4){border-top:1px solid var(--line)}.about{grid-template-columns:1fr}.meta-grid{grid-template-columns:1fr 1fr}.case-grid{grid-template-columns:1fr}.modal{padding:10px}.modal-body{padding:45px 7vw}.footer{display:block;line-height:2}.cursor{display:none}}
+@media(max-width:480px){.process-grid{grid-template-columns:1fr}.process-item{border-right:0!important;border-bottom:1px solid var(--line)}.process-item:last-child{border-bottom:0}.meta-grid{grid-template-columns:1fr 1fr}.hero h1{font-size:72px}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div><div class="noise"></div><div class="cursor" id="cursor"></div>
+<header class="nav">
+  <a class="brand" href="#">SARIM / TOPLY</a>
+  <nav class="navlinks"><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  <button class="menu" aria-label="Open menu" onclick="document.querySelector('.navlinks').style.display='flex'">☰</button>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">UI / UX Designer · Mumbai, India</div>
+    <h1>I design<br><em>digital things</em><br>people remember.</h1>
+  </div>
+  <div class="hero-meta">
+    <p>Research-led interfaces, expressive visual systems and interactive web experiences — built to look distinctive and make sense quickly.</p>
+    <div class="small">Currently building at the intersection of UX, visual design, motion and front-end experimentation.</div>
+    <div class="tags"><span class="tag" style="border-color:#ffffff55;color:white">UI/UX</span><span class="tag" style="border-color:#ffffff55;color:white">Research</span><span class="tag" style="border-color:#ffffff55;color:white">Web</span></div>
+  </div>
+  <div class="hero-sticker">SELECTED<br>WORK<br>2026</div>
+  <div class="scroll-cue">↓ Scroll to open the archive</div>
+</section>
+
+<main>
+<section class="section" id="work">
+  <div class="section-head"><div><div class="section-num">01 / SELECTED WORK</div><h2>The archive.</h2></div><p class="intro">Three projects that show how I think: research → interaction → visual system → shipped experience. Plus an app redesign to show product thinking.</p></div>
+  <div class="projects">
+    <article class="project cyb has-real" onclick="openCase('cyb')">
+      <div class="project-top"><span>01 / CYBENTIS.IN</span><span>UX + UI + BRAND</span></div>
+      <div class="visual"><img class="work-image" src="assets/cybentis-cover.png" alt="Cybentis UX research case study cover"></div>
+      <div class="project-title"><h3>Quiet<br>security.</h3><p>Luxury editorial UX for cybersecurity</p><a class="live-link" href="https://cybentis.in/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Visit live website ↗</a></div><div class="arrow">↗</div>
+    </article>
+    <article class="project sakura has-real" onclick="openCase('sakura')">
+      <div class="project-top"><span>02 / SAKURA RAMEN</span><span>UX RESEARCH</span></div>
+      <div class="visual"><iframe class="iframe-preview" src="sakura-ramen.html" title="Sakura Ramen website preview"></iframe></div>
+      <div class="project-title"><h3>Build<br>the bowl.</h3><p>Scroll-driven food discovery</p></div><div class="arrow">↗</div>
+    </article>
+    <article class="project puro has-real" onclick="openCase('puro')">
+      <div class="project-top"><span>03 / PURO HERITAGE</span><span>E-COMMERCE</span></div>
+      <div class="visual"><iframe class="iframe-preview" src="puro-heritage.html" title="Puro Heritage website preview"></iframe></div>
+      <div class="project-title"><h3>Wear<br>the story.</h3><p>Editorial commerce + brand identity</p></div><div class="arrow">↗</div>
+    </article>
+    <article class="project jio has-real" onclick="openCase('jio')">
+      <div class="project-top"><span>04 / MYJIO</span><span>APP REDESIGN</span></div>
+      <div class="visual"><iframe class="fig-preview" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F2J0hkTSvI1wDIcXfRwZqsf%2FUntitled%3Fnode-id%3D1-3%26page-id%3D0%253A1%26starting-point-node-id%3D1%253A3" title="Sarim Figma prototype"></iframe></div>
+      <div class="project-title"><h3>Simplify<br>the flow.</h3><p>Navigation + recharge + account UX</p></div><div class="arrow">↗</div>
+    </article>
+  </div>
+  <div class="actual-work">
+    <div class="section-num">ACTUAL PROJECT MATERIAL</div>
+    <h3>Your work, not placeholders.</h3>
+    <p class="sub">The portfolio surfaces the real work: live Cybentis, live Sakura Ramen, Puro Heritage, UX research boards, and your Figma prototype.</p>
+    <div class="artifact-grid">
+      <div class="artifact"><img src="assets/cybentis-cover.png" alt="Cybentis UX research and visual identity portfolio"><div class="artifact-label">Cybentis / UX Research + Visual Identity</div></div>
+      <div class="artifact"><img src="assets/sakura-storyboard.png" alt="Sakura Ramen UX storyboard"><div class="artifact-label">Sakura Ramen / UX Storyboard</div></div>
+      <div class="artifact"><img src="assets/sakura-moodboard.png" alt="Sakura Ramen moodboard and visual direction"><div class="artifact-label">Sakura Ramen / Moodboard + Visual Direction</div></div>
+      <div class="artifact"><iframe src="sakura-ramen.html" title="Sakura Ramen live website"></iframe><div class="artifact-label">Sakura Ramen / Interactive website <a href="sakura-ramen.html" target="_blank" rel="noopener">Open ↗</a></div></div>
+    </div>
+    <div class="case-embed" style="margin-top:18px"><iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F2J0hkTSvI1wDIcXfRwZqsf%2FUntitled%3Fnode-id%3D1-3%26page-id%3D0%253A1%26starting-point-node-id%3D1%253A3" title="Interactive Figma prototype"></iframe></div>
+    <div class="artifact-label" style="border:0;padding-left:0">Interactive Figma prototype / embedded from your supplied prototype link</div>
+  </div>
+</section>
+
+<section class="section process" id="process">
+  <div class="section-head"><div><div class="section-num">02 / HOW I WORK</div><h2>Think first.<br>Make it real.</h2></div><p class="intro">I use a flexible process rather than decorating a fixed template. The goal is to make every visual decision traceable to a user need or product objective.</p></div>
+  <div class="process-grid">
+    <div class="process-item"><b>01 / DISCOVER</b><h3>Understand.</h3><p>Research, competitor scans, personas, journey mapping and problem framing.</p></div>
+    <div class="process-item"><b>02 / DEFINE</b><h3>Find the signal.</h3><p>Turn observations into clear user needs, priorities and an information architecture.</p></div>
+    <div class="process-item"><b>03 / DESIGN</b><h3>Make it visible.</h3><p>Wireframes, interaction concepts, visual systems, prototypes and iterations.</p></div>
+    <div class="process-item"><b>04 / DIRECT</b><h3>Ship the idea.</h3><p>High-fidelity UI, motion, responsive build, testing and design handoff.</p></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-head"><div><div class="section-num">03 / ABOUT</div><h2>Not just<br>pretty pixels.</h2></div></div>
+  <div class="about">
+    <div class="about-copy">I'm Sarim — a UI/UX designer who likes the space between <em>logic and visual expression.</em></div>
+    <div class="about-side">
+      <p>I’m a MAAC-certified UI/UX designer with hands-on work spanning e-commerce, brand identity, interactive websites and app redesign. My toolkit includes Figma, Adobe tools, Blender and AI-assisted workflows.</p>
+      <p>I care about the reasoning behind an interface: what the user needs to understand, what should happen next, and how visual language can make that journey feel obvious.</p>
+      <div class="facts">
+        <div class="fact"><span>Focus</span>Product / UX / UI</div><div class="fact"><span>Tools</span>Figma · Adobe · Blender</div>
+        <div class="fact"><span>Strength</span>Visual + interaction</div><div class="fact"><span>Based</span>Mumbai, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div><div class="section-num" style="color:#9fb8ae">04 / LET'S TALK</div><h2>Have a problem<br>worth designing?</h2><a class="big-link" href="mailto:sarimtoply110@gmail.com">sarimtoply110@gmail.com ↗</a></div><div class="orbit"></div>
+</section>
+<footer class="footer"><span>© 2026 Sarim Toply</span><span>UI / UX · Web · Visual Design</span><a href="https://www.behance.net/gallery/238486101" target="_blank" rel="noopener">Behance ↗</a></footer>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Case study">
+  <div class="modal-card">
+    <div class="modal-head"><span class="brand">CASE STUDY / <span id="modalCode">01</span></span><button class="close" onclick="closeCase()">×</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const cases={
+cyb:{code:'01',kicker:'CYBENTIS.IN / UX RESEARCH + VISUAL IDENTITY',title:'Quiet security.',meta:[['Role','UI/UX Designer'],['Focus','Research + UI'],['Audience','CTOs / IT Managers'],['Direction','Secure Minimalism']],visual:'cyb',
+quote:'How might a cybersecurity service feel authoritative without looking aggressive or overloaded?',
+blocks:[
+['The problem','Cybersecurity interfaces are often technical, neon-heavy and dense. The challenge was to elevate Cybentis into a calmer, premium digital-security experience while keeping the information useful.'],
+['Research signal','The project identified enterprise CTOs, tech founders and IT managers as the core audience. Key pain points included overwhelming navigation, weak immediate trust signals and generic “tech” visual language.'],
+['Design decision','I used an editorial system: deep cinematic black, high-contrast Bodoni/Didot-style typography, raw linen transitions and a restrained cerulean accent. The goal was confidence rather than panic.'],
+['Journey','Discovery → exploration → trust → Request Audit. Services move into a minimalist radial information system, while the conversion action is kept frictionless inside a clean modal.']
+]},
+sakura:{code:'02',kicker:'SAKURA RAMEN / UX RESEARCH + INTERACTION',title:'Build the bowl.',meta:[['Role','UX/UI Designer'],['Focus','Research + Interaction'],['Audience','Food explorers'],['Concept','Progressive disclosure']],visual:'sakura',
+quote:'Turn the bowl into the interaction — not just the picture.',
+blocks:[
+['The problem','Choosing ramen online can become a wall of text before the user understands what the bowl actually is. Nutrition can be hidden, while craft and authenticity are difficult to communicate through static menu cards.'],
+['Research signal','The research identified three profiles: Food Explorer, Mindful Diner and Ramen Enthusiast. Their shared need was simple: understand the bowl quickly, then get a reason to trust it.'],
+['Design decision','The hero progressively reveals noodles, broth + tare, protein + egg, greens + nori and finishing touches. Scroll becomes progress; motion becomes explanation; detail appears only when useful.'],
+['Outcome','The intended journey moves from curiosity to discovery, understanding, trust, comparison and finally menu / visit / order. The interaction reduces uncertainty without overwhelming the user.']
+]},
+puro:{code:'03',kicker:'PURO HERITAGE / E-COMMERCE + BRAND IDENTITY',title:'Wear the story.',meta:[['Role','UI Designer / Developer'],['Focus','E-commerce + Brand'],['Product','Premium linen'],['Build','Responsive HTML/CSS/JS']],visual:'puro',
+quote:'An e-commerce site can feel like a lookbook without forgetting that it still has to help someone buy.',
+blocks:[
+['The idea','Puro Heritage combines premium linen clothing with an editorial, heritage-led visual language. The interface uses paper tones, serif typography and tactile image treatments to make the catalogue feel curated.'],
+['Visual system','Cormorant Garamond and DM Sans create the serif/editorial + utility pairing. The palette uses paper, ink, brown, rust, indigo, olive and brass tones.'],
+['Interaction','The build includes responsive navigation, collection/category exploration, product cards, manifesto/story sections, lookbook/archive moments and interactive drawers/modals.'],
+['Live build','The production-ready project is included with this portfolio package as `puro-heritage.html`, so the case can be opened and tested locally.']
+]},
+jio:{code:'04',kicker:'MYJIO / APP UI + UX REDESIGN',title:'Simplify the flow.',meta:[['Role','UI/UX Designer'],['Focus','Mobile UX'],['Problem','Navigation + account'],['Output','Prototype / redesign']],visual:'jio',
+quote:'The best redesign is often the one that makes the next action feel inevitable.',
+blocks:[
+['Context','A MyJio redesign exploration focused on simplifying navigation and high-frequency recharge/account flows.'],
+['UX focus','Reduce friction around finding important actions, clarify hierarchy and create a more direct path to common tasks.'],
+['Design approach','Start with the user flow, then use hierarchy, grouping and interaction states to make the interface easier to scan and act on.'],
+['Portfolio note','This project is positioned as a product-design case study alongside the more expressive web projects, showing range beyond visual styling.']
+]}
+};
+
+function openCase(key){
+ const c=cases[key]; document.getElementById('modalCode').textContent=c.code;
+ document.getElementById('modalBody').innerHTML=`
+ <div class="modal-kicker">${c.kicker}</div><h3>${c.title}</h3>
+ <div class="meta-grid">${c.meta.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b></div>`).join('')}</div>
+ <div class="case-visual ${c.visual}">${key==='sakura'?'<div class="bowl"><div class="noodle"></div><div class="egg"></div></div>':key==='cyb'?'<div class="cyber-card"><span class="pill">REQUEST AUDIT</span><div class="line"></div><div class="line" style="width:55%"></div></div>':key==='puro'?'<div class="puro-label">PURO HERITAGE<br><strong>LINEN</strong></div>': '<div class="phone" style="right:20%;top:12%;height:76%"><div class="bar"></div><div class="screen-line"></div><div class="screen-card"></div><div class="screen-line"></div></div>'}</div>
+ <div class="quote">${c.quote}</div>
+ <div class="case-grid">${c.blocks.map(b=>`<div class="case-block"><h4>${b[0]}</h4><p>${b[1]}</p></div>`).join('')}</div>
+ ${key==='cyb'?'<div class="case-gallery"><figure><img src="assets/cybentis-cover.png" alt="Cybentis case study"><figcaption>Research + visual identity</figcaption></figure></div><p><a class="big-link" style="color:#e86612" href="https://cybentis.in/" target="_blank" rel="noopener">Visit live CYBENTIS website ↗</a></p>':''}
+ ${key==='sakura'?'<div class="case-gallery"><figure><img src="assets/sakura-research.png" alt="Sakura Ramen UX research"><figcaption>Research framing</figcaption></figure><figure><img src="assets/sakura-storyboard.png" alt="Sakura Ramen storyboard"><figcaption>Hero interaction storyboard</figcaption></figure><figure><img src="assets/sakura-moodboard.png" alt="Sakura Ramen moodboard"><figcaption>Moodboard + visual direction</figcaption></figure></div><div class="case-embed"><iframe src="sakura-ramen.html" title="Sakura Ramen website"></iframe></div><p><a class="big-link" style="color:#625db8" href="sakura-ramen.html" target="_blank" rel="noopener">Open live Sakura Ramen website ↗</a></p>':''}
+ ${key==='puro'?'<div class="case-embed"><iframe src="puro-heritage.html" title="Puro Heritage website"></iframe></div><p><a class="big-link" style="color:#183f36" href="puro-heritage.html" target="_blank">Open live Puro Heritage build ↗</a></p>':''}
+ ${key==='jio'?'<div class="case-embed"><iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F2J0hkTSvI1wDIcXfRwZqsf%2FUntitled%3Fnode-id%3D1-3%26page-id%3D0%253A1%26starting-point-node-id%3D1%253A3" title="Figma prototype"></iframe></div>':''}
+ <div class="case-block" style="margin-top:60px"><h4>What this case shows</h4><p>Not only the final interface — the reasoning, hierarchy and interaction choices behind it.</p></div>`;
+ document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden';
+}
+function closeCase(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeCase()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase()});
+const cursor=document.getElementById('cursor');
+window.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
+document.querySelectorAll('a,button,.project').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('big'));el.addEventListener('mouseleave',()=>cursor.classList.remove('big'))});
+</script>
+</body>
+</html>

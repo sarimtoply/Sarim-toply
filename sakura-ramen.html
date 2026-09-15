@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakura Ramen — Crafted Slowly. Served Honestly.</title>
+<meta name="description" content="Sakura Ramen — premium authentic ramen with transparent nutrition, slow-crafted broths and a story rooted in Japanese ramen culture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#252448; --purple:#625db8; --purple-dark:#4e499c; --lav:#e7e5fa;
+  --blue:#d9f0f7; --cream:#fbfaf7; --orange:#df6a3b; --green:#8fa66d;
+  --line:rgba(37,36,72,.14); --white:#fff; --shadow:0 28px 70px rgba(53,48,110,.16);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+a{color:inherit;text-decoration:none} button{font:inherit}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px 5vw;background:rgba(251,250,247,.78);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:.3s}
+.nav.scrolled{border-color:var(--line);padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+.brand-mark{width:34px;height:34px;border-radius:50%;background:var(--purple);display:grid;place-items:center;color:#fff;font-family:"Cormorant Garamond";font-size:22px}
+.navlinks{display:flex;gap:30px;font-size:12px;text-transform:uppercase;letter-spacing:.12em}
+.navlinks a{opacity:.7}.navlinks a:hover{opacity:1}
+.cta{background:var(--purple);color:#fff;border:0;padding:13px 20px;border-radius:99px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s}
+.cta:hover{transform:translateY(-2px);background:var(--purple-dark)}
+.hero{min-height:100vh;position:relative;overflow:hidden;background:var(--blue);display:grid;place-items:center;padding:130px 5vw 70px}
+.hero-grid{width:min(1200px,100%);display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw;align-items:center}
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.2em;font-weight:700;opacity:.6;margin-bottom:18px}
+.script{font-family:"Allura",cursive;font-size:clamp(90px,13vw,190px);line-height:.75;color:var(--purple);font-weight:400}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(42px,5vw,72px);line-height:.9;margin:15px 0 25px;max-width:520px}
+.hero-copy{max-width:480px;line-height:1.75;color:#45436a}
+.hero-actions{display:flex;gap:12px;margin-top:30px;align-items:center}.ghost{padding:12px 18px;border:1px solid var(--line);border-radius:99px;font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.assembly-wrap{height:min(620px,70vh);min-height:480px;position:relative;display:grid;place-items:center;perspective:1200px}
+.ring{position:absolute;width:min(560px,90%);aspect-ratio:1;border-radius:50%;border:1px solid rgba(98,93,184,.3);animation:spin 22s linear infinite}
+.ring:after{content:"";position:absolute;inset:14%;border-radius:50%;border:1px dashed rgba(98,93,184,.25)}
+@keyframes spin{to{transform:rotate(360deg)}} 
+.bowl-stage{position:relative;width:min(510px,90%);aspect-ratio:1}
+.layer{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .1s linear,opacity .3s}
+.bowl{width:68%;height:36%;border-radius:0 0 50% 50% / 0 0 70% 70%;background:linear-gradient(#3d3a48,#242330);bottom:13%;top:auto;box-shadow:0 25px 35px rgba(30,28,50,.25);overflow:hidden}
+.bowl:before{content:"";position:absolute;left:6%;right:6%;top:-17%;height:38%;border-radius:50%;background:#2c2832;border:12px solid #15141c}
+.broth{width:58%;height:23%;border-radius:50%;background:radial-gradient(circle at 45% 40%,#e7a05d,#b85d32 55%,#7e3d2c);top:46%;box-shadow:0 8px 24px rgba(80,43,27,.25)}
+.noodles{width:53%;height:18%;border-radius:50%;background:repeating-radial-gradient(ellipse,#f5d99c 0 3px,#c7954d 4px 6px);top:42%;transform:translate(-50%,-50%) rotate(-8deg)}
+.egg{width:20%;aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#fff9db 55%,#f2c04d 56%);top:34%;left:61%;box-shadow:0 6px 12px rgba(0,0,0,.18);border:2px solid #f7eee0}
+.chashu{width:26%;height:14%;border-radius:50%;background:linear-gradient(135deg,#d89072,#8d493e);top:35%;left:38%;box-shadow:0 7px 12px rgba(0,0,0,.15);transform:translate(-50%,-50%) rotate(-14deg)}
+.nori{width:16%;height:27%;background:#26382d;border-radius:4px;top:38%;left:67%;transform:translate(-50%,-50%) rotate(20deg)}
+.scallion{width:15%;height:15%;border-radius:50%;border:7px dotted #86a95d;top:44%;left:49%}
+.sesame{width:11%;height:11%;border-radius:50%;background:radial-gradient(circle,#f6e8c3 0 2px,transparent 3px);background-size:9px 9px;top:52%;left:57%}
+.steam{position:absolute;width:3px;height:170px;background:linear-gradient(transparent,rgba(255,255,255,.9),transparent);filter:blur(3px);border-radius:50%;top:7%;opacity:.55;animation:steam 3s ease-in-out infinite}
+.s1{left:42%}.s2{left:53%;height:200px;animation-delay:.7s}.s3{left:64%;height:150px;animation-delay:1.2s}
+@keyframes steam{0%,100%{transform:translateY(20px) scaleX(1);opacity:0}50%{transform:translateY(-20px) scaleX(2);opacity:.7}}
+.scroll-note{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.55}
+.section{padding:110px 5vw}.container{width:min(1180px,100%);margin:auto}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:50px}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:700;opacity:.55}
+.section h2{font:600 clamp(45px,6vw,80px)/.9 "Cormorant Garamond",serif;margin:8px 0 0;max-width:700px}
+.lead{max-width:390px;line-height:1.7;opacity:.72}
+.menu{background:var(--purple);color:white}.menu .eyebrow{color:#fff;opacity:.65}
+.menu h2{color:white}.menu .lead{color:#eee;opacity:.8}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 14px 45px rgba(37,36,72,.08);transition:.35s}.card:hover{transform:translateY(-7px)}
+.card-img{height:280px;background-size:cover;background-position:center}
+.card-body{padding:22px}.card-title{font:600 34px/1 "Cormorant Garamond",serif}.price{color:var(--orange);font-weight:700;margin-top:12px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:7px 9px;border-radius:99px;background:var(--lav);color:var(--purple-dark)}
+.nutrition{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:start}
+.nutrition-art{position:sticky;top:120px}.nutrition-art img{width:100%;border-radius:30px;box-shadow:var(--shadow)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:25px}
+.stat{padding:20px;background:#fff;border:1px solid var(--line);border-radius:18px}.stat b{font:600 42px "Cormorant Garamond",serif}.stat span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.12em;opacity:.55;margin-top:5px}
+.nutri-list{display:grid;gap:10px}.nutri-row{display:grid;grid-template-columns:1.3fr .7fr .7fr .7fr;padding:15px 0;border-bottom:1px solid var(--line);font-size:13px}.nutri-row.head{font-size:10px;text-transform:uppercase;letter-spacing:.12em;opacity:.5;font-weight:700}
+.story{background:#f0eefc}.story-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center}.story p{line-height:1.9;max-width:670px;color:#55526f}.quote{font:500 38px/1.05 "Cormorant Garamond",serif;color:var(--purple)}
+.gallery{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-auto-rows:260px;gap:14px}.gallery img{width:100%;height:100%;object-fit:cover;border-radius:22px}.g1{grid-row:span 2}.g4{grid-column:span 2}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.step{background:var(--cream);padding:35px 24px;min-height:210px}.num{font-size:11px;opacity:.45}.step h3{font:600 32px "Cormorant Garamond",serif;margin:35px 0 10px}.step p{font-size:13px;line-height:1.7;opacity:.7}
+.video-section{background:#171622;color:white}.video-shell{position:relative;overflow:hidden;border-radius:28px;min-height:580px;background:#0f0e17;box-shadow:0 30px 80px rgba(0,0,0,.25)}.video-shell img{width:100%;height:100%;min-height:580px;object-fit:cover;opacity:.65}.video-overlay{position:absolute;inset:0;display:flex;align-items:end;padding:50px;background:linear-gradient(transparent 35%,rgba(0,0,0,.8));}.video-copy{max-width:600px}.video-copy h2{font:600 clamp(50px,7vw,90px)/.8 "Cormorant Garamond",serif;margin:10px 0}.video-link{display:inline-flex;margin-top:15px;padding:13px 18px;border-radius:99px;background:white;color:var(--ink);font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.footer{background:#15141e;color:white;padding:80px 5vw}.footer-grid{width:min(1180px,100%);margin:auto;display:flex;justify-content:space-between;gap:40px}.footer .script{font-size:90px;color:#a8a4ef}.footer p{opacity:.6;max-width:390px;line-height:1.7}
+@media(max-width:850px){.navlinks{display:none}.hero-grid,.nutrition,.story-grid{grid-template-columns:1fr}.hero{padding-top:120px}.assembly-wrap{order:-1;height:470px;min-height:0}.cards{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.g1{grid-row:span 1}.g4{grid-column:span 1}.nutrition-art{position:static}.section{padding:80px 5vw}.section-head{display:block}.lead{margin-top:20px}}
+@media(max-width:560px){.process{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.hero h1{font-size:44px}.script{font-size:90px}.stats{grid-template-columns:1fr 1fr}}
+
+/* --- Expanded ramen experience --- */
+.hero{min-height:210vh;display:block;padding:0}.hero-grid{position:sticky;top:0;height:100vh;min-height:720px;padding:120px 5vw 70px}.assembly-wrap{height:min(760px,82vh);min-height:600px}
+.bowl-stage{width:min(600px,94%);aspect-ratio:1}
+.hero-bowl-photo{
+  position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);
+  width:54%;aspect-ratio:1;border-radius:50%;object-fit:cover;
+  box-shadow:0 35px 55px rgba(38,31,50,.30);z-index:2;
+  border:12px solid rgba(255,255,255,.78);
+  opacity:.18;scale:.78;transition:opacity .35s,scale .35s,filter .35s;
+  filter:saturate(.85) contrast(1.02);
+}
+.bowl-rim{
+  position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);
+  width:58%;aspect-ratio:1;border-radius:50%;border:18px solid rgba(28,26,36,.88);
+  box-shadow:inset 0 0 0 10px rgba(255,255,255,.12),0 24px 35px rgba(20,18,30,.18);
+  z-index:1;opacity:.9;
+}
+.ingredient-photo{
+  position:absolute;width:88px;height:88px;border-radius:50%;object-fit:cover;
+  border:5px solid rgba(255,255,255,.92);box-shadow:0 18px 28px rgba(40,35,70,.20);
+  z-index:5;left:50%;top:50%;opacity:0;
+  transform:translate(-50%,-50%) translate(var(--x),var(--y)) scale(.45) rotate(var(--rot));
+  transition:transform .08s linear,opacity .2s linear;
+}
+.ingredient-label{
+  position:absolute;left:50%;top:50%;z-index:8;opacity:0;
+  font-size:9px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  background:rgba(255,255,255,.9);padding:7px 9px;border-radius:99px;
+  transform:translate(-50%,-50%) translate(var(--x),var(--y));
+  transition:opacity .2s;
+}
+.assembly-progress{
+  position:absolute;left:50%;bottom:2%;transform:translateX(-50%);
+  width:min(430px,75%);height:3px;background:rgba(98,93,184,.16);border-radius:99px;z-index:12;
+}
+.assembly-progress span{display:block;height:100%;width:0;background:var(--purple);border-radius:99px}
+.bowl-card-images{display:grid;grid-template-columns:1.55fr .72fr .72fr;gap:6px;height:240px;padding:7px;background:#f5f3ed}
+.bowl-card-images img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+.card-img{height:auto;background:none}
+.cards{grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+.card-body{min-height:235px;padding:26px 24px 24px;background:#fff;position:relative;z-index:2}.card-title{font:600 34px/1.05 "Cormorant Garamond",serif;margin:0 0 12px;color:var(--ink);position:relative;z-index:3}.card-body p{margin:0;line-height:1.6;color:#35334f}.tags{margin-top:18px}.price{line-height:1.1}
+.menu-intro{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
+.menu-note{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.62}
+.bowl-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.bowl-meta small{opacity:.55;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.more-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:35px}
+.more-photos img{width:100%;height:170px;object-fit:cover;border-radius:20px}
+@media(max-width:850px){
+  .cards{grid-template-columns:1fr 1fr}
+  .bowl-card-images{height:220px}
+  .ingredient-photo{width:70px;height:70px}
+}
+@media(max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .assembly-wrap{min-height:500px}
+  .bowl-card-images{height:230px}
+  .more-photos{grid-template-columns:1fr 1fr}
+  .more-photos img{height:130px}
+}
+
+
+/* Premium scroll-story hero */
+.hero-grid{overflow:hidden}
+.hero-grid:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 73% 50%,rgba(255,255,255,.42),transparent 31%);z-index:0}
+.hero-grid>div{position:relative;z-index:2}
+.assembly-wrap{overflow:visible}
+.assembly-wrap .ring{width:min(620px,92%);border-width:1px;opacity:.75}
+.assembly-wrap .ring:before{content:"";position:absolute;inset:8%;border-radius:50%;border:1px solid rgba(98,93,184,.12)}
+.bowl-stage{position:relative;z-index:3}
+.hero-bowl-photo{width:58%;border-width:10px;box-shadow:0 40px 80px rgba(38,31,50,.28);z-index:3;will-change:transform,opacity}
+.bowl-rim{width:62%;border-width:14px;z-index:2;opacity:.35}
+.ingredient-photo{width:104px;height:104px;z-index:7;will-change:transform,opacity;backface-visibility:hidden}
+.ingredient-label{z-index:10;white-space:nowrap;pointer-events:none}
+.assembly-progress{bottom:0;width:min(520px,78%);height:4px}
+.assembly-progress span{transition:width .08s linear}
+.assembly-copy{position:absolute;left:50%;bottom:4.5%;transform:translateX(-50%);z-index:11;width:min(560px,90%);display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.assembly-copy span{font-size:10px;text-transform:uppercase;letter-spacing:.18em;opacity:.48}
+.assembly-copy strong{font:600 25px "Cormorant Garamond",serif;color:var(--purple)}
+.scroll-note{transition:opacity .3s}
+@media(max-width:850px){
+  .hero{min-height:190vh}
+  .hero-grid{min-height:100svh;height:100svh;padding-top:105px}
+  .assembly-wrap{min-height:520px;height:58vh}
+  .ingredient-photo{width:72px;height:72px}
+  .ingredient-label{font-size:8px;padding:6px 7px}
+  .assembly-copy{bottom:4%}
+  .hero-bowl-photo{width:62%}
+}
+
+
+/* FINAL HERO LAYOUT FIX — keeps the scroll scene visible */
+.hero{
+  position:relative !important;
+  display:block !important;
+  min-height:210vh !important;
+  height:auto !important;
+  overflow:visible !important;
+  padding:0 !important;
+  background:var(--blue) !important;
+}
+.hero-grid{
+  position:sticky !important;
+  top:0 !important;
+  width:min(1200px,100%) !important;
+  height:100vh !important;
+  min-height:720px !important;
+  margin:0 auto !important;
+  padding:130px 5vw 70px !important;
+  display:grid !important;
+  grid-template-columns:.9fr 1.1fr !important;
+  gap:5vw !important;
+  align-items:center !important;
+  box-sizing:border-box !important;
+  overflow:visible !important;
+  z-index:1 !important;
+}
+.hero-grid:after{
+  z-index:-1 !important;
+}
+.hero-grid > div:first-child{
+  position:relative !important;
+  z-index:5 !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+.hero-grid .assembly-wrap{
+  position:relative !important;
+  z-index:5 !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  display:grid !important;
+  place-items:center !important;
+}
+.hero-grid .assembly-wrap .bowl-stage{
+  visibility:visible !important;
+}
+@media(max-width:850px){
+  .hero-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    height:100vh !important;
+    min-height:720px !important;
+    padding:105px 5vw 50px !important;
+  }
+  .hero-grid .assembly-wrap{
+    order:-1 !important;
+    height:52vh !important;
+    min-height:430px !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a class="brand" href="#"><span class="brand-mark">桜</span> Sakura Ramen</a>
+  <div class="navlinks"><a href="#menu">Menu</a><a href="#nutrition">Nutrition</a><a href="#story">Our Story</a><a href="#craft">The Craft</a></div>
+  <a class="cta" href="#menu">View Menu</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker">Authentic ramen · slow crafted</div>
+      <div class="script">Sakura</div>
+      <h1>A bowl made with patience, balance & soul.</h1>
+      <p class="hero-copy">Hand-pulled noodles, layered broths and carefully sourced ingredients — watch the bowl build itself as you scroll, from the first strand of noodles to the final aromatic finish.</p>
+      <div class="hero-actions"><a class="cta" href="#menu">Explore the bowls</a><a class="ghost" href="#story">Our beginning ↓</a></div>
+    </div>
+    <div class="assembly-wrap" id="assembly">
+      <div class="ring"></div>
+      <div class="bowl-stage">
+        <img class="hero-bowl-photo" id="heroBowl"
+          src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1200&q=90"
+          alt="Finished Sakura ramen bowl">
+        <div class="bowl-rim"></div>
+
+        <img class="ingredient-photo" data-step="1" style="--x:-220px;--y:-150px;--rot:-18deg"
+          src="https://images.unsplash.com/photo-1786114579649-73c8cc92abe2?auto=format&fit=crop&w=400&q=84" alt="Fresh ramen noodles">
+        <img class="ingredient-photo" data-step="2" style="--x:220px;--y:-150px;--rot:15deg"
+          src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=84" alt="Ramen broth">
+        <img class="ingredient-photo" data-step="3" style="--x:-245px;--y:-5px;--rot:12deg"
+          src="https://images.unsplash.com/photo-1501200040150-4d65c94e8f21?auto=format&fit=crop&w=400&q=84" alt="Chashu pork">
+        <img class="ingredient-photo" data-step="4" style="--x:245px;--y:-5px;--rot:-12deg"
+          src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=400&q=84" alt="Ajitama egg">
+        <img class="ingredient-photo" data-step="5" style="--x:-220px;--y:145px;--rot:-8deg"
+          src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=400&q=84" alt="Nori seaweed">
+        <img class="ingredient-photo" data-step="6" style="--x:220px;--y:145px;--rot:9deg"
+          src="https://images.unsplash.com/photo-1755151022395-678f4f3f75de?auto=format&fit=crop&w=400&q=84" alt="Fresh vegetables">
+        <img class="ingredient-photo" data-step="7" style="--x:-115px;--y:220px;--rot:-6deg"
+          src="https://images.unsplash.com/photo-1785031626942-5468584caf18?auto=format&fit=crop&w=400&q=84" alt="Aromatics and sesame">
+        <img class="ingredient-photo" data-step="8" style="--x:120px;--y:220px;--rot:7deg"
+          src="https://images.unsplash.com/photo-1501200040150-4d65c94e8f21?auto=format&fit=crop&w=400&q=84" alt="Scallions and finishing oil">
+
+        <span class="ingredient-label" data-step="1" style="--x:-220px;--y:-150px">01 · Noodles</span>
+        <span class="ingredient-label" data-step="2" style="--x:220px;--y:-150px">02 · Broth</span>
+        <span class="ingredient-label" data-step="3" style="--x:-245px;--y:-5px">03 · Chashu</span>
+        <span class="ingredient-label" data-step="4" style="--x:245px;--y:-5px">04 · Ajitama</span>
+        <span class="ingredient-label" data-step="5" style="--x:-220px;--y:145px">05 · Nori</span>
+        <span class="ingredient-label" data-step="6" style="--x:220px;--y:145px">06 · Greens</span>
+        <span class="ingredient-label" data-step="7" style="--x:-115px;--y:220px">07 · Sesame</span>
+        <span class="ingredient-label" data-step="8" style="--x:120px;--y:220px">08 · Finish</span>
+
+        <div class="layer steam s1"></div><div class="layer steam s2"></div><div class="layer steam s3"></div>
+        <div class="assembly-copy"><span>Scroll to build</span><strong id="assemblyStage">The empty bowl</strong><span id="assemblyCount">0 / 8</span></div>
+        <div class="assembly-progress"><span id="assemblyProgress"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-note">Scroll to assemble your bowl ↓</div>
+</header>
+
+<section class="section" id="menu">
+<div class="container">
+  <div class="section-head">
+    <div><div class="eyebrow">Our signature bowls</div><h2>Six bowls. Six personalities.</h2></div>
+    <p class="lead">Every bowl follows the same Sakura discipline: a clear broth, springy noodles, a defined tare and toppings that bring contrast.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div class="bowl-card-images">
+        <img src="https://images.unsplash.com/photo-1786232309895-6add89e45967?auto=format&fit=crop&w=1000&q=88" alt="Shoyu Sakura ramen">
+        <img src="https://images.unsplash.com/photo-1785031626942-5468584caf18?auto=format&fit=crop&w=500&q=82" alt="Shoyu ramen detail">
+        <img src="https://images.unsplash.com/photo-1501200040150-4d65c94e8f21?auto=format&fit=crop&w=500&q=82" alt="Chashu ramen detail">
+      </div>
+      <div class="card-body"><div class="card-title">Shoyu Sakura</div><p>Chicken & dashi broth, soy tare, chashu, nori, ajitama and scallion.</p><div class="tags"><span class="tag">680 kcal</span><span class="tag">36g protein</span></div><div class="bowl-meta"><div class="price">₹420</div><small>Classic · savoury · balanced</small></div></div>
+    </article>
+
+    <article class="card">
+      <div class="bowl-card-images">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=88" alt="Tonkotsu Bloom ramen">
+        <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=500&q=82" alt="Tonkotsu ramen detail">
+        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=500&q=82" alt="Tonkotsu topping detail">
+      </div>
+      <div class="card-body"><div class="card-title">Tonkotsu Bloom</div><p>Slow-simmered pork broth, garlic oil, chashu, black fungus, sesame and spring onion.</p><div class="tags"><span class="tag">760 kcal</span><span class="tag">42g protein</span></div><div class="bowl-meta"><div class="price">₹480</div><small>Rich · creamy · deep</small></div></div>
+    </article>
+
+    <article class="card">
+      <div class="bowl-card-images">
+        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=88" alt="Miso Garden ramen">
+        <img src="https://images.unsplash.com/photo-1786114579649-73c8cc92abe2?auto=format&fit=crop&w=500&q=82" alt="Fresh noodles">
+        <img src="https://images.unsplash.com/photo-1785031626942-5468584caf18?auto=format&fit=crop&w=500&q=82" alt="Miso toppings">
+      </div>
+      <div class="card-body"><div class="card-title">Miso Garden</div><p>Red miso broth, corn, mushroom, bok choy, tofu, nori and roasted sesame.</p><div class="tags"><span class="tag">590 kcal</span><span class="tag">27g protein</span></div><div class="bowl-meta"><div class="price">₹390</div><small>Earthy · umami · plant-forward</small></div></div>
+    </article>
+
+    <article class="card">
+      <div class="bowl-card-images">
+        <img src="https://images.unsplash.com/photo-1755151022395-678f4f3f75de?auto=format&fit=crop&w=1000&q=88" alt="Spicy seafood ramen">
+        <img src="https://images.unsplash.com/photo-1786232309895-6add89e45967?auto=format&fit=crop&w=500&q=82" alt="Seafood ramen detail">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=82" alt="Spicy ramen detail">
+      </div>
+      <div class="card-body"><div class="card-title">Spicy Umi</div><p>Chilli-sesame broth, prawns, mussels, corn, scallion, nori and a bright citrus finish.</p><div class="tags"><span class="tag">710 kcal</span><span class="tag">34g protein</span></div><div class="bowl-meta"><div class="price">₹520</div><small>Spicy · oceanic · bright</small></div></div>
+    </article>
+
+    <article class="card">
+      <div class="bowl-card-images">
+        <img src="https://images.unsplash.com/photo-1755151022395-678f4f3f75de?auto=format&fit=crop&w=1000&q=88" alt="Yuzu Shio ramen">
+        <img src="https://images.unsplash.com/photo-1786232309895-6add89e45967?auto=format&fit=crop&w=500&q=82" alt="Shio ramen detail">
+        <img src="https://images.unsplash.com/photo-1786114579649-73c8cc92abe2?auto=format&fit=crop&w=500&q=82" alt="Noodle detail">
+      </div>
+      <div class="card-body"><div class="card-title">Yuzu Shio</div><p>Clear chicken broth, sea salt tare, yuzu peel, chicken chashu, spinach and soft egg.</p><div class="tags"><span class="tag">520 kcal</span><span class="tag">31g protein</span></div><div class="bowl-meta"><div class="price">₹430</div><small>Clean · citrusy · delicate</small></div></div>
+    </article>
+
+    <article class="card">
+      <div class="bowl-card-images">
+        <img src="https://images.unsplash.com/photo-1501200040150-4d65c94e8f21?auto=format&fit=crop&w=1000&q=88" alt="Black garlic ramen">
+        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=500&q=82" alt="Black garlic topping detail">
+        <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=500&q=82" alt="Garlic ramen detail">
+      </div>
+      <div class="card-body"><div class="card-title">Kuro Garlic</div><p>Chicken-pork broth, roasted black garlic oil, chashu, cabbage, sesame and charred corn.</p><div class="tags"><span class="tag">735 kcal</span><span class="tag">39g protein</span></div><div class="bowl-meta"><div class="price">₹490</div><small>Smoky · aromatic · bold</small></div></div>
+    </article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="nutrition">
+<div class="container nutrition">
+  <div class="nutrition-art"><img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=1200&q=85" alt="Ramen bowl"><div class="stats"><div class="stat"><b>680</b><span>Calories / bowl</span></div><div class="stat"><b>36g</b><span>Protein</span></div><div class="stat"><b>82g</b><span>Carbohydrates</span></div><div class="stat"><b>24g</b><span>Fat</span></div></div></div>
+  <div><div class="eyebrow">Know your bowl</div><h2>Nutrition, without the guesswork.</h2><p class="lead">Illustrative values for a standard Shoyu Sakura bowl. Actual values vary with serving size, recipe and substitutions.</p>
+    <div class="nutri-list" style="margin-top:35px">
+      <div class="nutri-row head"><span>Component</span><span>kcal</span><span>Protein</span><span>Carbs</span></div>
+      <div class="nutri-row"><span>Noodles · 150g cooked</span><span>220</span><span>8g</span><span>43g</span></div>
+      <div class="nutri-row"><span>Chicken chashu · 80g</span><span>180</span><span>22g</span><span>2g</span></div>
+      <div class="nutri-row"><span>Shoyu–dashi broth · 350ml</span><span>105</span><span>5g</span><span>7g</span></div>
+      <div class="nutri-row"><span>Ajitama egg · 1</span><span>78</span><span>6g</span><span>1g</span></div>
+      <div class="nutri-row"><span>Nori + scallion + sesame</span><span>35</span><span>2g</span><span>3g</span></div>
+      <div class="nutri-row"><span>Aromatic oil · 1 tsp</span><span>62</span><span>0g</span><span>0g</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section story" id="story">
+<div class="container story-grid">
+  <div><div class="eyebrow">How we started</div><h2>From one stockpot to a room full of steam.</h2><p>Sakura Ramen began with a simple question: what if a bowl could feel both deeply traditional and completely at home here? We studied the discipline behind Japanese ramen — broth, tare, aroma, noodle texture and timing — then built our own kitchen around it.</p><p>Today, every service starts long before the doors open. Broths are layered slowly, noodles are cooked to order, and toppings are finished moments before they reach the bowl.</p></div>
+  <div><div class="quote">“Good ramen isn't rushed. The clock is part of the recipe.”</div><p style="margin-top:25px">— Sakura kitchen note, 2018</p></div>
+</div>
+</section>
+
+
+<section class="section" id="bowl-gallery">
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">See every bowl</div><h2>Different bowls, the same attention.</h2></div><p class="lead">Close-up views of broth, noodles, toppings and the finished bowl — designed to make the menu feel as tactile as the food.</p></div>
+  <div class="more-photos">
+    <img src="https://images.unsplash.com/photo-1786232309895-6add89e45967?auto=format&fit=crop&w=800&q=85" alt="Sakura ramen bowl">
+    <img src="https://images.unsplash.com/photo-1755151022395-678f4f3f75de?auto=format&fit=crop&w=800&q=85" alt="Ramen with egg and greens">
+    <img src="https://images.unsplash.com/photo-1785031626942-5468584caf18?auto=format&fit=crop&w=800&q=85" alt="Ramen bowl detail">
+    <img src="https://images.unsplash.com/photo-1501200040150-4d65c94e8f21?auto=format&fit=crop&w=800&q=85" alt="Chashu ramen">
+    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=85" alt="Rich ramen broth">
+    <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=800&q=85" alt="Ramen with egg">
+    <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=85" alt="Vegetable ramen">
+    <img src="https://images.unsplash.com/photo-1786114579649-73c8cc92abe2?auto=format&fit=crop&w=800&q=85" alt="Fresh ramen noodles">
+  </div>
+</div>
+</section>
+
+<section class="section" id="craft">
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">The craft</div><h2>Every bowl has a sequence.</h2></div><p class="lead">Our kitchen is built around repeatable rituals — so the experience stays generous, precise and unmistakably Sakura.</p></div>
+  <div class="process">
+    <div class="step"><span class="num">01</span><h3>Stock</h3><p>We build a layered broth from bones, aromatics, kombu and dried seafood, extracting depth over hours.</p></div>
+    <div class="step"><span class="num">02</span><h3>Tare</h3><p>Soy, miso or salt-based seasoning concentrates the bowl's character before broth ever meets the noodles.</p></div>
+    <div class="step"><span class="num">03</span><h3>Noodles</h3><p>Fresh noodles are cooked to order for the exact spring and bite each bowl needs.</p></div>
+    <div class="step"><span class="num">04</span><h3>Assembly</h3><p>Broth, noodles, protein, vegetables and aroma oil come together in seconds — then straight to you.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section video-section">
+<div class="container">
+  <div class="eyebrow">Inside the kitchen</div><h2 style="color:white">Watch the bowl come alive.</h2>
+  <div class="video-shell" style="margin-top:45px">
+    <img src="https://images.pexels.com/videos/5907434/pexels-photo-5907434.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Ramen preparation">
+    <div class="video-overlay"><div class="video-copy"><div class="eyebrow">Preparation / 01</div><h2>Broth. Noodles. Steam.</h2><p style="line-height:1.7;opacity:.75">A glimpse into the slow, tactile process behind every Sakura bowl.</p><a class="video-link" href="https://www.pexels.com/video/a-chef-preparing-a-japanese-noodle-soup-dish-with-toppings-3298481/" target="_blank" rel="noopener">Watch the chef build a bowl ↗</a></div></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="section-head"><div><div class="eyebrow">A little more Sakura</div><h2>The details matter.</h2></div><p class="lead">From the steam above the stockpot to the last scallion on the counter.</p></div>
+  <div class="gallery">
+    <img class="g1" src="https://images.unsplash.com/photo-1501200040150-4d65c94e8f21?auto=format&fit=crop&w=1200&q=85" alt="Ramen bowl">
+    <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=900&q=85" alt="Ramen dish">
+    <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=85" alt="Japanese food">
+    <img class="g4" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1600&q=85" alt="Ramen preparation">
+  </div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer-grid">
+  <div><div class="script">Sakura</div><p>Authentic ramen, made slowly and served with intention. Explore six signature bowls, transparent nutrition, the story behind the kitchen, and a scroll-led bowl assembly.</p></div>
+  <div><div class="eyebrow">Visit Sakura</div><p>12 Hanami Lane<br>Tokyo-inspired kitchen<br>Open daily · 12 PM — 11 PM</p><a class="cta" href="#top">Back to top ↑</a></div>
+</div>
+</footer>
+
+<script>
+const hero = document.getElementById('top');
+const nav = document.getElementById('nav');
+const assembly = document.getElementById('assembly');
+const heroBowl = document.getElementById('heroBowl');
+const ingredients = [...assembly.querySelectorAll('.ingredient-photo')];
+const labels = [...assembly.querySelectorAll('.ingredient-label')];
+const progress = document.getElementById('assemblyProgress');
+const ring = assembly.querySelector('.ring');
+const stageText = document.getElementById('assemblyStage');
+const countText = document.getElementById('assemblyCount');
+
+const stages = [
+  "The empty bowl",
+  "Noodles go in",
+  "Broth is poured",
+  "Chashu is placed",
+  "Ajitama settles",
+  "Nori adds depth",
+  "Greens bring contrast",
+  "Sesame adds aroma",
+  "Sakura is finished"
+];
+
+function clamp(v, a=0, b=1){ return Math.max(a, Math.min(b, v)); }
+function smooth(v){ return v*v*(3-2*v); }
+
+function updateAssembly(){
+  const rect = hero.getBoundingClientRect();
+  const scrollable = Math.max(1, hero.offsetHeight - innerHeight);
+  const p = clamp((-rect.top) / scrollable);
+
+  // The finished bowl slowly becomes vivid while the ingredients arrive.
+  const bowlP = smooth(clamp((p - .08) / .82));
+  heroBowl.style.opacity = (.08 + bowlP*.92).toFixed(3);
+  heroBowl.style.transform =
+    `translate(-50%,-50%) scale(${(.76+bowlP*.24).toFixed(3)})`;
+  heroBowl.style.filter =
+    `saturate(${(.55+bowlP*.45).toFixed(2)}) contrast(${(.94+bowlP*.08).toFixed(2)})`;
+
+  ingredients.forEach((el, i) => {
+    const step = Number(el.dataset.step);
+    const start = (step-1) / ingredients.length * .88 + .025;
+    const end = start + .15;
+    const local = smooth(clamp((p-start)/(end-start)));
+
+    const x = parseFloat(getComputedStyle(el).getPropertyValue('--x')) || 0;
+    const y = parseFloat(getComputedStyle(el).getPropertyValue('--y')) || 0;
+    const rot = parseFloat(getComputedStyle(el).getPropertyValue('--rot')) || 0;
+
+    // Each ingredient flies in from outside, turns, then settles into the center.
+    const currentX = x * (1-local);
+    const currentY = y * (1-local);
+    const currentRot = rot*(1-local) + (i%2 ? 2 : -2)*local;
+    const scale = .62 + .38*local;
+
+    el.style.opacity = clamp(local*1.8).toFixed(3);
+    el.style.transform =
+      `translate(-50%,-50%) translate(${currentX}px,${currentY}px) scale(${scale}) rotate(${currentRot}deg)`;
+
+    const labelLocal = clamp((p-start)/.10);
+    labels[i].style.opacity =
+      labelLocal > .78 ? '0' : (labelLocal*.9).toFixed(3);
+  });
+
+  const completed = Math.min(8, Math.floor(p*9));
+  stageText.textContent = stages[completed];
+  countText.textContent = `${completed} / 8`;
+  progress.style.width = `${(p*100).toFixed(1)}%`;
+  ring.style.transform = `rotate(${(p*540).toFixed(1)}deg)`;
+
+  document.querySelector('.scroll-note').style.opacity = p > .06 ? '0' : '1';
+}
+
+let ticking = false;
+addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', scrollY > 40);
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      updateAssembly();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, {passive:true});
+
+addEventListener('resize', updateAssembly);
+updateAssembly();
+</script>
+</body>
+</html>
